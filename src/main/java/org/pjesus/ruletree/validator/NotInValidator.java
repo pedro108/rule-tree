@@ -2,6 +2,7 @@ package org.pjesus.ruletree.validator;
 
 import org.pjesus.ruletree.rule.Rule;
 import org.pjesus.ruletree.selector.DataSelector;
+import org.pjesus.ruletree.utils.CollectionUtils;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -22,9 +23,14 @@ public class NotInValidator implements Validator {
     List<?> values = (List<?>) attributes.get("value");
 
     try {
-      Object selectedData = this.dataSelector.select(data, dataPath);
-      return values.stream()
-        .noneMatch(value -> value.equals(selectedData));
+      final Object selectedData = this.dataSelector.select(data, dataPath);
+      return CollectionUtils.noneMatch(values, new CollectionUtils.MatchCallback() {
+		
+		@Override
+		public boolean match(Object value) {
+			return value.equals(selectedData);
+		}
+      });
     } catch (Exception e) {
       return false;
     }
