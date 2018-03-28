@@ -1,11 +1,11 @@
 package org.pjesus.ruletree.validator;
 
-import org.pjesus.ruletree.parser.Parser;
-import org.pjesus.ruletree.rule.Rule;
-import org.pjesus.ruletree.selector.DataSelector;
+import java.util.Map;
 
 import javax.inject.Inject;
-import java.util.Map;
+
+import org.pjesus.ruletree.rule.Rule;
+import org.pjesus.ruletree.selector.DataSelector;
 
 public class EqualsValidator implements Validator {
   private final DataSelector dataSelector;

@@ -1,14 +1,18 @@
 package org.pjesus.ruletree.condition.factory;
 
-import com.google.inject.Guice;
-import com.google.inject.Injector;
+import java.util.Collection;
+import java.util.Set;
+
+import javax.inject.Inject;
+
 import org.pjesus.ruletree.RuleTreeModule;
 import org.pjesus.ruletree.condition.AbstractCondition;
 import org.pjesus.ruletree.condition.annotation.Condition;
+import org.pjesus.ruletree.utils.CollectionUtils;
 import org.reflections.Reflections;
 
-import javax.inject.Inject;
-import java.util.Set;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 
 public class ConditionFactory {
   private final Reflections reflections;
@@ -18,13 +22,16 @@ public class ConditionFactory {
     this.reflections = reflections;
   }
 
-  public AbstractCondition create(String conditionName) {
+  public AbstractCondition create(final String conditionName) {
     Set<Class<?>> conditionClasses = this.reflections.getTypesAnnotatedWith(Condition.class);
-    Class<?> conditionClass = conditionClasses.stream()
-      .filter(c -> c.getAnnotation(Condition.class).value().equals(conditionName))
-      .findFirst()
-      .orElse(AbstractCondition.class);
-
+    Collection<Class<?>> filteredConditionClasses = CollectionUtils.filter(conditionClasses, new CollectionUtils.FilterCallback() {
+		
+		@Override
+		public boolean filter(Object object) {
+			return ((Class<?>) object).getAnnotation(Condition.class).value().equals(conditionName);
+		}
+	});
+    Class<?> conditionClass = CollectionUtils.getFirstOrDefault(filteredConditionClasses, AbstractCondition.class);
     Injector injector = Guice.createInjector(new RuleTreeModule());
     return (AbstractCondition) injector.getInstance(conditionClass);
   }

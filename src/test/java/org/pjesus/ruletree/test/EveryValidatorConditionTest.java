@@ -1,7 +1,10 @@
 package org.pjesus.ruletree.test;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Map;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.pjesus.ruletree.RuleTree;
@@ -9,11 +12,9 @@ import org.pjesus.ruletree.RuleTreeBuilder;
 import org.pjesus.ruletree.mock.CoverageMock;
 import org.pjesus.ruletree.mock.ProductMock;
 import org.pjesus.ruletree.mock.SimulationMock;
+import org.pjesus.ruletree.utils.MapUtils;
 
-import java.util.Map;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import com.google.common.collect.ImmutableList;
 
 public class EveryValidatorConditionTest {
   private Map<String, Object> ruleTreeConfig;
@@ -22,10 +23,10 @@ public class EveryValidatorConditionTest {
   @Before
   public void setUp() {
     ruleTree = RuleTreeBuilder.build();
-    ruleTreeConfig = ImmutableMap.of(
+    ruleTreeConfig = MapUtils.create(
       "condition", "every",
       "data", "#getProducts.coverages[]",
-      "rule", ImmutableMap.of(
+      "rule", MapUtils.create(
         "condition", "greater-than",
         "data", "benefit",
         "value", 500000

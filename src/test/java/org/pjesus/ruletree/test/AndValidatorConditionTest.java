@@ -1,19 +1,19 @@
 package org.pjesus.ruletree.test;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Arrays;
+import java.util.Map;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.pjesus.ruletree.RuleTree;
 import org.pjesus.ruletree.RuleTreeBuilder;
-import org.pjesus.ruletree.mock.CoverageMock;
-import org.pjesus.ruletree.mock.ProductMock;
 import org.pjesus.ruletree.mock.SimulationMock;
+import org.pjesus.ruletree.utils.MapUtils;
 
-import java.util.Map;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import com.google.common.collect.ImmutableList;
 
 public class AndValidatorConditionTest {
   private Map<String, Object> ruleTreeConfig;
@@ -22,15 +22,15 @@ public class AndValidatorConditionTest {
   @Before
   public void setUp() {
     ruleTree = RuleTreeBuilder.build();
-    ruleTreeConfig = ImmutableMap.of(
+    ruleTreeConfig = MapUtils.create(
       "condition", "and",
-      "rules", ImmutableList.of(
-        ImmutableMap.of(
+      "rules", Arrays.asList(
+    		  MapUtils.create(
           "condition", "greater-than",
           "data", "contribution",
           "value", 100
         ),
-        ImmutableMap.of(
+	    MapUtils.create(
           "condition", "in",
           "data", "proposalModel",
           "value", ImmutableList.of("FA", "FN")
