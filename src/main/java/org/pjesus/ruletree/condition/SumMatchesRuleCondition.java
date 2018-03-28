@@ -6,7 +6,7 @@ import org.pjesus.ruletree.validator.Validator;
 
 import javax.inject.Inject;
 
-@Condition("some")
+@Condition("sum-matches-rule")
 public class SumMatchesRuleCondition implements AbstractCondition {
   private final SumMatchesRuleValidator validator;
 
