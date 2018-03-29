@@ -1,12 +1,10 @@
 package org.pjesus.ruletree.condition;
 
-import org.pjesus.ruletree.condition.annotation.Condition;
+import javax.inject.Inject;
+
 import org.pjesus.ruletree.validator.ExistsValidator;
 import org.pjesus.ruletree.validator.Validator;
 
-import javax.inject.Inject;
-
-@Condition("exists")
 public class ExistsCondition implements AbstractCondition {
   private final ExistsValidator validator;
 

@@ -1,12 +1,10 @@
 package org.pjesus.ruletree.condition;
 
-import org.pjesus.ruletree.condition.annotation.Condition;
+import javax.inject.Inject;
+
 import org.pjesus.ruletree.validator.LesserThanValidator;
 import org.pjesus.ruletree.validator.Validator;
 
-import javax.inject.Inject;
-
-@Condition("lesser-than")
 public class LesserThanCondition implements AbstractCondition {
   private final LesserThanValidator validator;
 

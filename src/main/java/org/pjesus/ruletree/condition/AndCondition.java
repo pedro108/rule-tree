@@ -1,12 +1,10 @@
 package org.pjesus.ruletree.condition;
 
-import org.pjesus.ruletree.condition.annotation.Condition;
+import javax.inject.Inject;
+
 import org.pjesus.ruletree.validator.AndValidator;
 import org.pjesus.ruletree.validator.Validator;
 
-import javax.inject.Inject;
-
-@Condition("and")
 public class AndCondition implements AbstractCondition {
   private final AndValidator validator;
 

@@ -1,12 +1,10 @@
 package org.pjesus.ruletree.condition;
 
-import org.pjesus.ruletree.condition.annotation.Condition;
+import javax.inject.Inject;
+
 import org.pjesus.ruletree.validator.OrValidator;
 import org.pjesus.ruletree.validator.Validator;
 
-import javax.inject.Inject;
-
-@Condition("or")
 public class OrCondition implements AbstractCondition {
   private final OrValidator validator;
 

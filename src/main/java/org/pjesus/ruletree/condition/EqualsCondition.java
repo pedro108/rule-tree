@@ -1,12 +1,10 @@
 package org.pjesus.ruletree.condition;
 
-import org.pjesus.ruletree.condition.annotation.Condition;
+import javax.inject.Inject;
+
 import org.pjesus.ruletree.validator.EqualsValidator;
 import org.pjesus.ruletree.validator.Validator;
 
-import javax.inject.Inject;
-
-@Condition("equals")
 public class EqualsCondition implements AbstractCondition {
   private final EqualsValidator validator;
 
