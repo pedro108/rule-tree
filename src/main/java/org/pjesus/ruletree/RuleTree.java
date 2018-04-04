@@ -15,11 +15,11 @@ public class RuleTree {
   }
 
   public Boolean validate(Map<String, Object> ruleTreeConfig, Object data) {
-    Rule rootRule = this.parse(ruleTreeConfig);
+	Rule rootRule = this.parse(ruleTreeConfig);
     return rootRule
-      .getCondition()
-      .getValidator()
-      .validate(rootRule, data);
+    	      .getCondition()
+    	      .getValidator()
+    	      .validate(rootRule, data);
   }
 
   private Rule parse(Map<String, Object> ruleTreeConfig) {

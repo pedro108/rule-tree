@@ -1,12 +1,10 @@
 package org.pjesus.ruletree.condition;
 
-import org.pjesus.ruletree.condition.annotation.Condition;
+import javax.inject.Inject;
+
 import org.pjesus.ruletree.validator.SumMatchesRuleValidator;
 import org.pjesus.ruletree.validator.Validator;
 
-import javax.inject.Inject;
-
-@Condition("sum-matches-rule")
 public class SumMatchesRuleCondition implements AbstractCondition {
   private final SumMatchesRuleValidator validator;
 
