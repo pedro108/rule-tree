@@ -3,6 +3,7 @@ package org.pjesus.ruletree.test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Arrays;
 import java.util.Map;
 
 import org.junit.Before;
@@ -13,8 +14,6 @@ import org.pjesus.ruletree.mock.CoverageMock;
 import org.pjesus.ruletree.mock.ProductMock;
 import org.pjesus.ruletree.mock.SimulationMock;
 import org.pjesus.ruletree.utils.MapUtils;
-
-import com.google.common.collect.ImmutableList;
 
 public class SomeValidatorConditionTest {
   private Map<String, Object> ruleTreeConfig;
@@ -40,9 +39,9 @@ public class SomeValidatorConditionTest {
     CoverageMock firstCoverage = new CoverageMock(400000.0, 100.0);
     CoverageMock secondCoverage = new CoverageMock(550000.0, 80.0);
     CoverageMock thirdCoverage = new CoverageMock(350000.0, 180.0);
-    ProductMock firstProduct = new ProductMock(ImmutableList.of(firstCoverage, secondCoverage));
-    ProductMock secondProduct = new ProductMock(ImmutableList.of(thirdCoverage));
-    simulationMock.setProducts(ImmutableList.of(firstProduct, secondProduct));
+    ProductMock firstProduct = new ProductMock(Arrays.asList(firstCoverage, secondCoverage));
+    ProductMock secondProduct = new ProductMock(Arrays.asList(thirdCoverage));
+    simulationMock.setProducts(Arrays.asList(firstProduct, secondProduct));
 
     assertTrue(ruleTree.validate(ruleTreeConfig, simulationMock));
   }
@@ -53,9 +52,9 @@ public class SomeValidatorConditionTest {
     CoverageMock firstCoverage = new CoverageMock(200000.0, 100.0);
     CoverageMock secondCoverage = new CoverageMock(450000.0, 80.0);
     CoverageMock thirdCoverage = new CoverageMock(150000.0, 180.0);
-    ProductMock firstProduct = new ProductMock(ImmutableList.of(firstCoverage, secondCoverage));
-    ProductMock secondProduct = new ProductMock(ImmutableList.of(thirdCoverage));
-    simulationMock.setProducts(ImmutableList.of(firstProduct, secondProduct));
+    ProductMock firstProduct = new ProductMock(Arrays.asList(firstCoverage, secondCoverage));
+    ProductMock secondProduct = new ProductMock(Arrays.asList(thirdCoverage));
+    simulationMock.setProducts(Arrays.asList(firstProduct, secondProduct));
 
     assertFalse(ruleTree.validate(ruleTreeConfig, simulationMock));
   }

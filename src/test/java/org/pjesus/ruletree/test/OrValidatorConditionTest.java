@@ -13,8 +13,6 @@ import org.pjesus.ruletree.RuleTreeBuilder;
 import org.pjesus.ruletree.mock.SimulationMock;
 import org.pjesus.ruletree.utils.MapUtils;
 
-import com.google.common.collect.ImmutableList;
-
 public class OrValidatorConditionTest {
   private Map<String, Object> ruleTreeConfig;
   private RuleTree ruleTree;
@@ -33,7 +31,7 @@ public class OrValidatorConditionTest {
 	    MapUtils.create(
           "condition", "in",
           "data", "proposalModel",
-          "value", ImmutableList.of("FA", "FN")
+          "value", Arrays.asList("FA", "FN")
         )
       )
     );

@@ -3,6 +3,7 @@ package org.pjesus.ruletree.test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Arrays;
 import java.util.Map;
 
 import org.junit.Before;
@@ -11,8 +12,6 @@ import org.pjesus.ruletree.RuleTree;
 import org.pjesus.ruletree.RuleTreeBuilder;
 import org.pjesus.ruletree.mock.SimulationMock;
 import org.pjesus.ruletree.utils.MapUtils;
-
-import com.google.common.collect.ImmutableList;
 
 public class InValidatorConditionTest {
   private Map<String, Object> ruleTreeConfig;
@@ -24,7 +23,7 @@ public class InValidatorConditionTest {
     ruleTreeConfig = MapUtils.create(
       "condition", "in",
       "data", "#getProposalModel",
-      "value", ImmutableList.of("MA", "JK")
+      "value", Arrays.asList("MA", "JK")
     );
   }
 

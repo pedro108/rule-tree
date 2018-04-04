@@ -15,8 +15,6 @@ import org.pjesus.ruletree.mock.ProductMock;
 import org.pjesus.ruletree.mock.SimulationMock;
 import org.pjesus.ruletree.utils.MapUtils;
 
-import com.google.common.collect.ImmutableList;
-
 public class SumMatcherConditionTest {
 	private Map<String, Object> ruleTreeConfig;
 	private RuleTree ruleTree;
@@ -50,9 +48,9 @@ public class SumMatcherConditionTest {
 		CoverageMock firstCoverage = new CoverageMock(200000.0, 100.0, "morte");
 		CoverageMock secondCoverage = new CoverageMock(250000.0, 150.0, "ACÚMULO DE RISCO PARA COBERTURAS DE MORTE (PECÚLIO)");
 		CoverageMock thirdCoverage = new CoverageMock(150000.0, 80.0, "ACÚMULO DE RISCO PARA COBERTURAS DE INVALIDEZ ACIDENTAL");
-		ProductMock firstProduct = new ProductMock(ImmutableList.of(firstCoverage, secondCoverage));
-		ProductMock secondProduct = new ProductMock(ImmutableList.of(thirdCoverage));
-		simulationMock.setProducts(ImmutableList.of(firstProduct, secondProduct));
+		ProductMock firstProduct = new ProductMock(Arrays.asList(firstCoverage, secondCoverage));
+		ProductMock secondProduct = new ProductMock(Arrays.asList(thirdCoverage));
+		simulationMock.setProducts(Arrays.asList(firstProduct, secondProduct));
 
 		assertTrue(ruleTree.validate(ruleTreeConfig, simulationMock));
 	}
@@ -63,9 +61,9 @@ public class SumMatcherConditionTest {
 		CoverageMock firstCoverage = new CoverageMock(200000.0, 100.0, "morte");
 		CoverageMock secondCoverage = new CoverageMock(250000.0, 150.0, "ACÚMULO DE RISCO PARA COBERTURAS DE MORTE (PECÚLIO)");
 		CoverageMock thirdCoverage = new CoverageMock(15000.0, 1500.0, "Vida Toda");
-		ProductMock firstProduct = new ProductMock(ImmutableList.of(firstCoverage, secondCoverage));
-		ProductMock secondProduct = new ProductMock(ImmutableList.of(thirdCoverage));
-		simulationMock.setProducts(ImmutableList.of(firstProduct, secondProduct));
+		ProductMock firstProduct = new ProductMock(Arrays.asList(firstCoverage, secondCoverage));
+		ProductMock secondProduct = new ProductMock(Arrays.asList(thirdCoverage));
+		simulationMock.setProducts(Arrays.asList(firstProduct, secondProduct));
 
 		assertFalse(ruleTree.validate(ruleTreeConfig, simulationMock));
 	}
